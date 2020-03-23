@@ -1,3 +1,7 @@
+beautifulsoup4==4.8.2
+bs4==0.0.1
+certifi==2019.11.28
+cffi==1.14.0
 chardet==3.0.4
 cryptography==2.8
 decorator==4.4.2
@@ -15,3 +19,4 @@ termcolor==1.1.0
 tornado==6.0.4
 urllib3==1.25.8
 yarg==0.1.9
+
