@@ -235,9 +235,18 @@ def get_url(update: Update, context: CallbackContext):
                 text='2...'
             )
             goods = asos_parser_bot(linksJs, all_urls, headers, valuet, session, soup)
+            update.message.reply_text(
+                text='3...'
+            )
             cours = get_cours(headers, session)
+            update.message.reply_text(
+                text='4...'
             result(cours, goods)
+            update.message.reply_text(
+                text='5...'
             goods, name = sort(goods)
+            update.message.reply_text(
+                text='6...'
             end = prinT(goods,name)
             update.message.reply_text(
                 text=end,
