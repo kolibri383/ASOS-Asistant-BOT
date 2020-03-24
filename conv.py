@@ -240,13 +240,13 @@ def get_url(update: Update, context: CallbackContext):
             )
             cours = get_cours(headers, session)
             update.message.reply_text(
-                text='4...'
+                text='4...')
             result(cours, goods)
             update.message.reply_text(
-                text='5...'
+                text='5...')
             goods, name = sort(goods)
             update.message.reply_text(
-                text='6...'
+                text='6...')
             end = prinT(goods,name)
             update.message.reply_text(
                 text=end,
