@@ -84,9 +84,6 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
 
         country = conuntryList[i]
 
-        requestPrice = session.get(linksJs[i], headers=headers)
-        soupJs = bs(requestPrice.content, 'lxml')
-        soupJs = str(soupJs)
         
 
         if i == 1:
@@ -94,12 +91,12 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
             goods.append({'name': name})
 
         goods.append({
-            'country': country, 
+            'country': country,
+            'price': float(price),
             'valuet': valuet[i],
             'url': all_urls[i]
             })
     return goods
-
 
 
 def get_cours(headers, session):
