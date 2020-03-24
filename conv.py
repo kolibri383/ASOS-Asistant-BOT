@@ -11,7 +11,7 @@ from telegram.ext import Filters
 
 
 
-
+TG_TOKEN = '1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E'
 
 
 headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -105,7 +105,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
 
 
 
-def get_cours(session):
+def get_cours(headers, session):
     url = 'https://pokur.su/gbp/'
 
     request = session.get(url, headers=headers)
@@ -221,28 +221,17 @@ def get_url(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
         )
     else:
-        id, T, soup, session = check_url(link)
+        id, T, soup, session = check_url(link,)
         if T:
             update.message.reply_text(
                 text='Найдена 1 позиция. Подождите, идет поиск цен...'
             )
             all_urls = get_all_urls(id)
-            
             linksJs, valuet = get_urlsJs(id)
-        
-            cours = get_cours(session)
-            update.message.reply_text(
-                text='4...')
-            goods = asos_parser_bot(linksJs, all_urls, valuet, session, soup)
-            update.message.reply_text(
-                text='3...'
-            )
+            goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
+            cours = get_cours(headers, session)
             result(cours, goods)
-            update.message.reply_text(
-                text='5...')
             goods, name = sort(goods)
-            update.message.reply_text(
-                text='6...')
             end = prinT(goods,name)
             update.message.reply_text(
                 text=end,
@@ -257,8 +246,9 @@ def get_url(update: Update, context: CallbackContext):
 
 
 def main():
+    TG_TOKEN = '1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E'
     updater = Updater(
-        token='1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E',
+        token=str(TG_TOKEN),
         base_url='https://telegg.ru/orig/bot',
         use_context=True,
     )
