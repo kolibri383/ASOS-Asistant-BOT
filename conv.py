@@ -94,15 +94,8 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
         price = float(price)
         if i == 1:
             name = soup.find('h1').text
-            goods.append({'name': name})
 
-        goods.append({
-            'country': country,
-            'price': price,
-            'valuet': valuet,
-            'url': url
-            })
-    return goods
+    return name
 
 
 
@@ -237,7 +230,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text='Найдена 1 позиция. Подождите, идет поиск цен...'
+                text=goods
             )
             cours = get_cours(headers, session)
             goods = result(cours, goods)
