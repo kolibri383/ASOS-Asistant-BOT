@@ -93,7 +93,9 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
         price = price[0]['productPrice']['current']['value']
         price = float(price)
         if i == 1:
-            name = soup.find('h1').text
+           name = soup.find('h1').text
+        else:
+           name = 'None'
 
     return name
 
@@ -230,7 +232,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text=goods
+                text='ffff'
             )
             cours = get_cours(headers, session)
             goods = result(cours, goods)
