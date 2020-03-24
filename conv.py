@@ -11,7 +11,7 @@ from telegram.ext import Filters
 
 
 
-TG_TOKEN = '1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E'
+
 
 
 headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -262,7 +262,7 @@ def get_url(update: Update, context: CallbackContext):
 
 def main():
     updater = Updater(
-        token='1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E',
+        token=TG_TOKEN,
         base_url='https://telegg.ru/orig/bot',
         use_context=True,
     )
