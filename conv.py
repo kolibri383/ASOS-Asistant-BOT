@@ -221,14 +221,15 @@ def get_url(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
         )
     else:
-        id, T, soup, session = check_url(link,)
+        id, T, soup, session = check_url(link)
         if T:
             update.message.reply_text(
                 text='Найдена 1 позиция. Подождите, идет поиск цен...'
             )
             all_urls = get_all_urls(id)
             update.message.reply_text(
-                text=(id,all_urls)
+                text=(id,
+                      all_urls)
             )
             linksJs, valuet = get_urlsJs(id)
             update.message.reply_text(
