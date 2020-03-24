@@ -228,7 +228,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             all_urls = get_all_urls(id)
             update.message.reply_text(
-                text=id
+                text=(id,all_urls)
             )
             linksJs, valuet = get_urlsJs(id)
             update.message.reply_text(
