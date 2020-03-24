@@ -100,7 +100,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
             'country': country,
             'price': float(price),
             'valuet': valuet,
-            'url': all_urls
+            'url': url
             })
     return goods
 
