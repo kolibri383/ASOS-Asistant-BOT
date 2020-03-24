@@ -232,7 +232,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             linksJs, valuet = get_urlsJs(id)
             update.message.reply_text(
-                text=(linkJs, 
+                text=(linksJs,
                       valuet)
             )
             cours = get_cours(headers, session)
