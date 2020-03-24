@@ -232,7 +232,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             linksJs, valuet = get_urlsJs(id)
             update.message.reply_text(
-                text=valuet, linkjs
+                text=linkjs
             )
             goods = asos_parser_bot(linksJs, all_urls, headers, valuet, session, soup)
             update.message.reply_text(
