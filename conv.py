@@ -262,7 +262,7 @@ def get_url(update: Update, context: CallbackContext):
 
 def main():
     updater = Updater(
-        token=TG_TOKEN,
+        token=str(TG_TOKEN),
         base_url='https://telegg.ru/orig/bot',
         use_context=True,
     )
