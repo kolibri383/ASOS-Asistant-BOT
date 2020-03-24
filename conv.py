@@ -84,7 +84,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
 
         country = conuntryList[i]
 
-        print('')
+
 
         if i == 1:
             name = soup.find('h1').text
