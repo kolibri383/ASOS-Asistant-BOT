@@ -105,7 +105,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
 
 
 
-def get_cours(headers, session):
+def get_cours(session):
     url = 'https://pokur.su/gbp/'
 
     request = session.get(url, headers=headers)
@@ -227,19 +227,13 @@ def get_url(update: Update, context: CallbackContext):
                 text='Найдена 1 позиция. Подождите, идет поиск цен...'
             )
             all_urls = get_all_urls(id)
-            update.message.reply_text(
-                text=(id,
-                      all_urls)
-            )
+            
             linksJs, valuet = get_urlsJs(id)
-            update.message.reply_text(
-                text=(linksJs,
-                      valuet)
-            )
-            cours = get_cours(headers, session)
+        
+            cours = get_cours(session)
             update.message.reply_text(
                 text='4...')
-            goods = asos_parser_bot(linksJs, all_urls, headers, valuet, session, soup)
+            goods = asos_parser_bot(linksJs, all_urls, valuet, session, soup)
             update.message.reply_text(
                 text='3...'
             )
