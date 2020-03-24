@@ -91,7 +91,9 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
         price = json.loads(root.xpath('.//p')[0].text)
         price = price[0]['productPrice']['current']['value']
 
-        
+        if i == 1:
+            name = soup.find('h1').text
+            goods.append({'name': name})
 
         goods.append({
             'country': country,
@@ -227,17 +229,14 @@ def get_url(update: Update, context: CallbackContext):
             all_urls = get_all_urls(id)
             linksJs, valuet = get_urlsJs(id)
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
+            cours = get_cours(headers, session)
+            result(cours, goods)
+            goods, name = sort(goods)
+            end = prinT(goods,name)
             update.message.reply_text(
-                text='Найдена 1 позиция. Подождите, идет поиск цен...'
-            )
-            #cours = get_cours(headers, session)
-            #result(cours, goods)
-            #goods, name = sort(goods)
-            #end = prinT(goods,name)
-            #update.message.reply_text(
-             #   text=end,
-             #   parse_mode=ParseMode.MARKDOWN,
-             #  )
+                text=end,
+                parse_mode=ParseMode.MARKDOWN,
+               )
         else:
             update.message.reply_text(
                 text='Ошибка. Не могу определить эту ссылку.'
