@@ -91,14 +91,14 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
         root = etree.fromstring(soupJs)
         price = json.loads(root.xpath('.//p')[0].text)
         price = price[0]['productPrice']['current']['value']
-
+        price = float(price)
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
 
         goods.append({
             'country': country,
-            'price': float(price),
+            'price': price,
             'valuet': valuet,
             'url': url
             })
