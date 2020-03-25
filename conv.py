@@ -78,9 +78,31 @@ def get_urlsJs(id):
 
 
 def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
-    name = 'ffffff'
+    goods = []
+    conuntryList = ['RU', 'GB', 'AU', 'TW', 'HK', 'IL', 'CN', 'TR', 'DE', 'SE', 'FR', 'EE']
+    for i in range(len(all_urls)):
 
-    return name
+        country = conuntryList[i]
+
+        requestPrice = session.get(linksJs[i], headers=headers)
+        soupJs = bs(requestPrice.content, 'lxml')
+        soupJs = str(soupJs)
+        root = etree.fromstring(soupJs)
+        price = json.loads(root.xpath('.//p')[0].text)
+        price = price[0]['productPrice']['current']['value']
+
+        if i == 1:
+            name = soup.find('h1').text
+            goods.append({'name': name})
+
+        goods.append({
+            'country': country,
+            'price': float(price),
+            'valuet': valuet[i],
+            'url': all_urls[i]
+            })
+           
+    return goods
 
 
 
@@ -215,7 +237,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text='ffff'
+                text=goods
             )
             cours = get_cours(headers, session)
             goods = result(cours, goods)
