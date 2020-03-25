@@ -212,21 +212,12 @@ def get_url(update: Update, context: CallbackContext):
                 text='Найдена 1 позиция. Подождите, идет поиск цен...'
             )
             all_urls = get_all_urls(id)
-            update.message.reply_text(
-                text='Найдена 1 позиция. Подождите, идет поиск цен...'
-            )
             linksJs, valuet = get_urlsJs(id)
-            update.message.reply_text(
-                text='Найдена 1 позиция. Подождите, идет поиск цен...'
-            )
-            cours = get_cours(headers, session)
-            update.message.reply_text(
-                text=cours
-            )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
                 text=goods
             )
+            cours = get_cours(headers, session)
             goods = result(cours, goods)
             goods, name = sort(goods)
             end = prinT(goods,name)
