@@ -86,7 +86,6 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
         soupJs = str(soupJs)
         root = etree.fromstring(soupJs)
         price = json.loads(root.xpath('.//p')[0].text)
-        price = price[0]['productPrice']['current']['value']
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
@@ -220,9 +219,6 @@ def get_url(update: Update, context: CallbackContext):
                 text='Найдена 1 позиция. Подождите, идет поиск цен...'
             )
             all_urls = get_all_urls(id)
-            update.message.reply_text(
-                text=all_urls
-            )
             linksJs, valuet = get_urlsJs(id)
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
