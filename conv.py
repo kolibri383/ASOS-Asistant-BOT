@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import json
+from time import sleep
 from lxml import etree
 from telegram import ParseMode
 from telegram.ext import CallbackContext
@@ -81,12 +82,19 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
     goods = []
     conuntryList = ['RU', 'GB', 'AU', 'TW', 'HK', 'IL', 'CN', 'TR', 'DE', 'SE', 'FR', 'EE']
            
-           
+    requestPrice = session.get(linksJs[0], headers=headers)
+    soupJs = bs(requestPrice.content, 'lxml')
+    soupJs = str(soupJs)
+    root = etree.fromstring(soupJs)
+    price = json.loads(root.xpath('.//p')[0].text)
+    price = price[0]['productPrice']['current']['value']
+       
     for i in range(len(all_urls)):
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
         goods.append({'country':conuntryList[i], 'valuet': valuet[i], 'url': all_urls[i]})
+        sleep(0.1)
            
     a = len(goods)
     return a
