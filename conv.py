@@ -206,6 +206,7 @@ def get_url(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
         )
     else:
+        T = False
         id, T, soup, session = check_url(link,)
         if T:
             update.message.reply_text(
@@ -215,10 +216,10 @@ def get_url(update: Update, context: CallbackContext):
             linksJs, valuet = get_urlsJs(id)
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text=goods
+                text='222'
             )
             cours = get_cours(headers, session)
-            goods = result(cours, goods)
+            result(cours, goods)
             goods, name = sort(goods)
             end = prinT(goods,name)
             update.message.reply_text(
