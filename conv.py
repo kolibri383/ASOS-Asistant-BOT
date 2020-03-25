@@ -226,7 +226,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text=goods
+                text=goods[0]
             )
             goods = result(cours, goods)
             goods, name = sort(goods)
