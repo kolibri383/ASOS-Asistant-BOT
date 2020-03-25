@@ -85,9 +85,9 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
            valuet = valuet[i]
            url = all_urls[i]
            a = {'country': country,'valuet': valuet,'url': url}
-           goods.append(a)
            
-    return goods
+           
+    return a
 
 
 
@@ -226,7 +226,7 @@ def get_url(update: Update, context: CallbackContext):
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
-                text=goods[0]
+                text=a
             )
             goods = result(cours, goods)
             goods, name = sort(goods)
