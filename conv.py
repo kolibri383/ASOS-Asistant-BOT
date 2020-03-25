@@ -81,9 +81,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
     goods = []
     conuntryList = ['RU', 'GB', 'AU', 'TW', 'HK', 'IL', 'CN', 'TR', 'DE', 'SE', 'FR', 'EE']
     for i in range(len(all_urls)):
-        requestPrice = session.get(linksJs[i], headers=headers)
-        soupJs = bs(requestPrice.content, 'lxml')
-        soupJs = str(soupJs)
+
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
