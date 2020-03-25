@@ -85,7 +85,7 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
            if i == 1:
                       name = soup.find('h1').text
                       goods.append({'name': name})
-           goods.append({'country':conuntryList[i], 'price': float(price), 'valuet': valuet[i], 'url': all_urls[i]})
+           goods.append({'country':conuntryList[i], 'valuet': valuet[i], 'url': all_urls[i]})
            
     a = len(goods)
     return a
