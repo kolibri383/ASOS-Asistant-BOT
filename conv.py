@@ -17,7 +17,7 @@ TG_TOKEN = '1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E'
 
 headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 YaBrowser/20.2.0.1043 Yowser/2.5 Safari/537.36'}
-proxy = {'htpp': 'htpp://95.141.193.14:80', 'htpp://46.235.53.26:3128'
+proxy = {'htpp': 'htpp://95.141.193.14:80', 'htpp://46.235.53.26:3128',
          'htpps':'htpp://95.141.193.14:80'}
 
 def check_url(link):
@@ -81,14 +81,8 @@ def get_urlsJs(id):
 def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
     goods = []
     conuntryList = ['RU', 'GB', 'AU', 'TW', 'HK', 'IL', 'CN', 'TR', 'DE', 'SE', 'FR', 'EE']
-           
 
-    
-       
     for i in range(len(all_urls)):
-        requestPrice = session.get(linksJs[i], headers=headers)
-          
-           
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
