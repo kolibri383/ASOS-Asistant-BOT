@@ -86,8 +86,8 @@ def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
            url = all_urls[i]
            goods.append({'url':url})
            
-           
-    return goods
+    a = len(goods)
+    return a
 
 
 
