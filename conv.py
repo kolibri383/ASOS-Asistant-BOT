@@ -218,7 +218,7 @@ def get_url(update: Update, context: CallbackContext):
             all_urls = get_all_urls(id)
             linksJs, valuet = get_urlsJs(id)
             update.message.reply_text(
-                text=link[js]
+                text=linksJs
             )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
