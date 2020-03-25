@@ -80,10 +80,11 @@ def get_urlsJs(id):
 def asos_parser_bot(linksJs, all_urls, valuet, session, soup):
     goods = []
     conuntryList = ['RU', 'GB', 'AU', 'TW', 'HK', 'IL', 'CN', 'TR', 'DE', 'SE', 'FR', 'EE']
+    requestPrice = session.get(linksJs[0], headers=headers)
+    soupJs = bs(requestPrice.content, 'lxml')
+           
+           
     for i in range(len(all_urls)):
-        session = requests.Session()
-        requestPrice = session.get(linksJs[i], headers=headers)
-        soupJs = bs(requestPrice.content, 'lxml')
         if i == 1:
             name = soup.find('h1').text
             goods.append({'name': name})
@@ -218,6 +219,9 @@ def get_url(update: Update, context: CallbackContext):
             )
             all_urls = get_all_urls(id)
             linksJs, valuet = get_urlsJs(id)
+            update.message.reply_text(
+                text=link[js]
+            )
             goods = asos_parser_bot(linksJs, all_urls,valuet, session, soup)
             update.message.reply_text(
                 text=goods
