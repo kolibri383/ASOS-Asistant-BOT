@@ -383,7 +383,6 @@ def main():
     TG_TOKEN = '1148579186:AAHnPRrZ8INOQVZkDErcdGlm5OLGXxQ9Q-E' # Токен бота
     updater = Updater(
         token=str(TG_TOKEN),
-        base_url='https://telegg.ru/orig/bot',
         use_context=True,
     )
     updater.dispatcher.add_handler(MessageHandler(Filters.text, callback=get_url)) # запускаем функцию get_url
